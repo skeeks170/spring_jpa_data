@@ -1,8 +1,8 @@
 package com.assignment.product;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
 import java.util.List;
 
@@ -10,24 +10,29 @@ import java.util.List;
 public class ProductApplication {
 
 	public static void main(String[] args) {
+
 		ApplicationContext context = SpringApplication.run(ProductApplication.class, args);
 
-		ProductService service = context.getBean(ProductService.class);
+		ProductServices services = context.getBean(ProductServices.class);
 
-		System.out.println("------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------");
 
-		List<Product> products = service.fetchAllProducts();
-		for (Product p : products) {
+		List<Product> allProducts = services.fetchAllProducts();
+		for(Product p : allProducts){
 			System.out.println(p);
 		}
 
-			System.out.println("------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------");
 
-			products = service.fetchProductOutOfWarranty();
-			for (Product p : products) {
-				System.out.println(p);
+		List<Product> outOfWarrantyProducts = services.fetchProductsOutOfWarranty();
+		for(Product p : outOfWarrantyProducts){
+			System.out.println(p);
 		}
+
+		System.out.println("----------------------------------------------------------------------");
+
+		services.addProduct(new Product(18 ,"Stream Deck","Streaming Device","Main Desk",2026));
+
 	}
+
 }
-
-
