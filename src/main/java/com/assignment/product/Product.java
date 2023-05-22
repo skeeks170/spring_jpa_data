@@ -10,9 +10,10 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -20,4 +21,5 @@ public class Product {
     private String type;
     private String place;
     private int warrantyYear;
+
 }
