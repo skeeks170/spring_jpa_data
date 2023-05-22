@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProductService {
+public class ProductServices {
 
     @Autowired
     private ProductRepository repository;
@@ -15,8 +15,11 @@ public class ProductService {
         return repository.findAll();
     }
 
-   public List<Product> fetchProductOutOfWarranty(){
+    public List<Product> fetchProductsOutOfWarranty(){
         return repository.findByWarrantyYearLessThan(2023);
-   }
+    }
 
+    public void addProduct(Product p){
+        repository.save(p);
+    }
 }
